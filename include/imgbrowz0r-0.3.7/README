@@ -1,0 +1,133 @@
+ImgBrowz0r
+==========
+
+ImgBrowz0r is a class written in PHP5 (tested with 5.2.9) that enables you to set up
+a simple gallery with basic configuration in 10 minutes. It's also possible to integrate
+it into a CMS or your existing website. You can also configure various other things like
+sorting order and thumbnail sizes (etc. etc.).
+
+It does things like generating thumbnails, generating pagination/breadcrumbs and outputs
+XHTML that has sufficient classes and ID's to make it easy to adjust and extend everything
+with CSS and Javascript.
+
+The only thing you have to do is install it and upload your images and you're done. And
+maybe clean the cache once in a while.
+
+Features
+========
+
+ - Infinite nesting of directories.
+ - Automatic thumbnail creation and caching.
+ - Thumbnail is refreshed if the orginal image is changed.
+ - Transparency in PNG and GIF images is preserved in the thumbnail.
+ - Valid XHTML 1.0 Strict output.
+ - Easy to integrate into any website or CMS.
+ - Easy to style and extend with CSS and Javascript.
+ - Ability to configure time display and timezone.
+ - Represent a directory with a (random) thumbnail.
+ - Sorting of images and directories can be configured.
+ - Tableless based layout for the gallery.
+ - Images (and the cache) can be stored on different locations/(sub)domains on the
+   server as long it's reachable by the browser.
+ - Support for gif, jpg, jpeg, jpe, jif, jfif, jfi and png images.
+ - Page navigation and breadcrumbs.
+ - File information and output caching to speed everything up.
+ - Reads Exif date from Jpeg images when possible (and use it for sorting).
+
+Requirements
+============
+
+ - PHP 5.2
+ - GD
+ - Exif (optional)
+
+Exif is most likely enabled in most PHP installations. See the PHP manual for
+more information: http://php.net/manual/en/exif.installation.php
+
+Installation
+============
+
+ - Drop the files from this package into a web accessible directory.
+ - Make two directories named "images" and "cache" in the ImgBrowz0r directory.
+ - Make "cache" directory writable (linux command: `chmod -R 0777 cache`).
+ - Drop some images and directories in "images" directory.
+
+That's a really basic setup. It's recommended to play with the configuration
+and try various things (url rewriting, CMS integration, etc.).
+
+Contact/Support
+===============
+
+Project page: http://61924.nl/projects/imgbrowz0r.html
+Issues: http://github.com/FSX/imgbrowz0r/issues
+Demo: http://images.61924.nl/
+
+Development
+===========
+
+You can take a look at the development progress here:
+http://github.com/FSX/imgbrowz0r
+
+And bugs can be reported here:
+http://github.com/FSX/imgbrowz0r/issues
+
+Extra information
+=================
+
+Information about certain things.
+
+  - Character blacklist
+
+    Certain characters are not allowed in directory names.
+
+    < > " ' & ; .. %
+
+  - read_thumb_limit
+
+    When the "random thumbnail" function is enabled it reads the cache of the current
+    category/directory to choose a random thumbnail. If there are a lot thumbnails in
+    the cache it will take more time to read all the files in the cache.
+
+    You can set this to 10 to speedup the process, but it will only choose a random
+    thumbnail of out the 10 first files it reads from the thumbnail cache.
+
+  - Description for directories
+
+    With imgbrowz0r::description() you can search for a description in the currently
+    viewed directory. The function return the content of the description file when it
+    found it and "null" is returned when nothing is found.
+
+    You can add a description to a directory by adding a .desc file in the directory
+    and put your description in that file.
+
+    Html tags are stripped from the description except the following tags:
+    <p>, <strong>, <em>, <a>, <br />, <h1>, <h2> and <h3>
+
+     - Use valid HTML in your description to avoid unexpected behaviour.
+     - Look for more info at:
+       http://php.net/manual/en/function.strip-tags.php
+
+  - Caching
+
+    A small caching class, `ImgBrowz0rCache`, is provided with ImgBrowz0r. An instance
+    of this class is passed to the ImgBrowz0r constructor to let ImgBrowz0r use the
+    function of the caching class (see example.php for an example).
+
+    This class can easily be replaced with an other cache as long as the other class
+    has a public write and read method.
+
+    A skeleton of of a caching class for ImgBrowz0r:
+
+    class AlternativeImgBrowz0rCache
+    {
+        public function read($name)
+        {
+        }
+
+        public function write($name, $data)
+        {
+        }
+    }
+
+    $name is the filename without the extension. The class must decide which extension
+    to use. $data is an array. The read method must return the same array which was cached.

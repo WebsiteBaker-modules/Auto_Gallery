@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+#empty_cache{
+	float:right;
+	padding-top:10px;
+	}
+#reset{
+	float:right;
+	margin-top:10px;
+	}
+#submit{
+	margin-top:10px;
+	}
+.required{
+		color:red;
+		}
