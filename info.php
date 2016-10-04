@@ -25,9 +25,8 @@
 $module_directory = 'Auto_Gallery';
 $module_name = 'Auto Gallery';
 $module_function = 'page';
-$module_version = '0.5';
+$module_version = '0.6';
 $module_platform = '2.8.3';
-$module_guid= '3CAD5A48-D763-45A7-9AF8-5A92E2FFF155';
 $module_author = 'Karl Pierce';
 $module_license = 'GNU General Public License';
 $module_description = 'This module is a Photo Gallery. It uses Pretty Photo by Stephane Caron (http://www.no-margin-for-errors.com) and ImgBrowz0r by Frank Smit(http://61924.nl/projects/imgbrowz0r.html) and plupload (http://www.plupload.com). Website Baker integration by Karl Pierce(http://www.KarlPierceDesign.com)';

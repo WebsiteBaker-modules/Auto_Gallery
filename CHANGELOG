@@ -1,0 +1,25 @@
+Autogallery Versions-History
+
+v 0.6 - 23/08/2016
++ fix Output-Url from hardcoded pages-Dir to PAGES_DIRECTORY (thanks to masju)
+
+v.0.5
+* Updated plupload
+* Updated prettyphoto
+* Pretty photo now includes share links for twitter and FB
+* Removed support for jQuerryAdmin since it is no longer serviced
+
+v.0.4
+* fixed bug that stopped it from working in IE and Opera.
+* still not working correctly in Safari(looks like it uploads but does not).
+* fixed button issue in IE.
+
+v0.3
+* Security of upload.php is enhanced.
+* jQueryAdmin is integrated, but not required.
+
+
+v0.2
+* Added Drag and Drop file upload using plupload.
+* included imgbrowser tweak by Olli.
+* Need to double-check upload.php for security(do not use in production yet).
